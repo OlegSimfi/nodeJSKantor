@@ -1,12 +1,14 @@
-const phrases = require('./ru.json');
-function Index(name) {
+// module.exports = exports =this
+
+const db = require('../db/');
+const log = require('../logger.js')(module);
+
+function User(name) {
     this.name = name;
 }
 
-Index.prototype.hello = function (who) {
-    console.log(phrases.Hello + ", " + who.name)
+User.prototype.hello = function (who) {
+    log(db.getPhrase("Hello") + ", " + who.name)
 };
 
-console.log("user.js is required!");
-
-exports.User = Index;
+exports.User = User;
